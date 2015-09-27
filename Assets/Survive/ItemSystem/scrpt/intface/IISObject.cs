@@ -1,22 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface IISObject {
-    //name
-    //icon
-    string ISName { get; set; }
-    Sprite ISIcon { get; set; }
+namespace Survive.ItemSystem
+{
+    public interface IISObject
+    {
+        //name
+        //icon
+        string ISName { get; set; }
+        Sprite ISIcon { get; set; }
 
-    //value in gold
-    int ISValue { get; set; }
-    //quality
-    //durability
-    //size
-    //weight
-    int ISWeight { get; set; }
+        //value in gold
+        int ISValue { get; set; }
+        //quality
+        //durability
+        //size
+        //weight
+        int ISWeight { get; set; }
 
-    //canEquip
-    //isQuestItem
-    //canTakeDamage
-    //canTrade
+        //these go to other item interfaces
+        //canEquip
+        //isQuestItem
+        //canTakeDamage
+        //canTrade
+        //prefab
+    }
 }
