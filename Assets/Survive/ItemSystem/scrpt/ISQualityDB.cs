@@ -5,6 +5,7 @@ using System.Collections.Generic;
 namespace Survive.ItemSystem
 {
     public class ISQualityDB : ScriptableObject {
-        List<ISQuality> db = new List<ISQuality>();
+        //[SerializeField]
+        public List<ISQuality> database = new List<ISQuality>();
         }
 }

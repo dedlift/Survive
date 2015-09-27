@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
 
 namespace Survive.ItemSystem
 {
+[System.Serializable]
     public class ISQuality : IISQuality
     {
         [SerializeField]
@@ -12,7 +12,7 @@ namespace Survive.ItemSystem
         Sprite _icon;
 
 
-        ISQuality()
+        public ISQuality()
         {
             _name = "Common";
             _icon = new Sprite();
