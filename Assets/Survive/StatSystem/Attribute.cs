@@ -1,5 +1,5 @@
 ﻿public class Attribute : BaseStat {
-
+    //test
     public Attribute()
     {
         ExpToLevel = 50;

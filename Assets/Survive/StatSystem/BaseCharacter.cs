@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;   //enum class
-
+//test
 public class BaseCharacter : MonoBehaviour {
     private string _name;
     private int _level;

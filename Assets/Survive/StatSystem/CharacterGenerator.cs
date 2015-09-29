@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;   //for Enum
-
+//test
 public class CharacterGenerator : MonoBehaviour {
     private PlayerCharacter _toon;
     private const int STARTING_POINTS = 4;
