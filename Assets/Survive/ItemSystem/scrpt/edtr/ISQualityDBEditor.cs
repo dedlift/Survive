@@ -5,13 +5,15 @@ using UnityEditor;
 namespace Survive.ItemSystem.Editor
 {
 
-    public class ISQualityDBEditor : EditorWindow
+    public partial class ISQualityDBEditor : EditorWindow
     {
         ISQualityDB qualityDB;
         ISQuality selectedItem;
         Texture2D selectedTexture;
+        int selectedIndex = -1;
+        Vector2 _scrollPos; //scroll position for ListView
 
-        const int SPRITE_BUTTON_SIZE = 92;
+        const int SPRITE_BUTTON_SIZE = 32;
         const string DBFILENAME = @"SurviveQualityDB.asset";
         const string DBFOLDERNAME = @"DB";
         const string FULLDBPATH = @"Assets/" + DBFOLDERNAME + "/" + DBFILENAME;
@@ -49,7 +51,8 @@ namespace Survive.ItemSystem.Editor
 
         void OnGUI()
         {
-            AddQualityToDatabase();
+            ListView();
+            //AddQualityToDatabase();
             //GUILayout.Label("This is a label");
         }
 
@@ -82,8 +85,10 @@ namespace Survive.ItemSystem.Editor
                 if (selectedItem == null)
                     return;
 
-                qualityDB.database.Add(selectedItem);
+                if (selectedItem.Name == "") return;
 
+                qualityDB.Add(selectedItem);
+                
                 selectedItem = new ISQuality();
             }
         }

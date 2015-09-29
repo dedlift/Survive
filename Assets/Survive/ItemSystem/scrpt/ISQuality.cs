@@ -14,7 +14,7 @@ namespace Survive.ItemSystem
 
         public ISQuality()
         {
-            _name = "Common";
+            _name = "";
             _icon = new Sprite();
         }
 
