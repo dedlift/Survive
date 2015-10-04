@@ -9,8 +9,18 @@ public class CharacterGenerator : MonoBehaviour {
     private const int STARTING_VALUE = 3;
     private int pointsLeft;
 
-	// Use this for initialization
-	void Start () {
+    private const int OFFSET = 5;
+    private const int LINE_HEIGHT = 20;
+    private const int STAT_LABEL_WIDTH = 100;
+    private const int BASEVALUE_LABEL_WIDTH = 30;
+    private const int BUTTON_WIDTH = 20;
+    private const int BUTTON_HEIGHT = 20;
+    private int statStartingPos = 40;
+
+    public GUIStyle myStyle;
+
+    // Use this for initialization
+    void Start () {
         _toon = new PlayerCharacter();
         _toon.Awake();
 
@@ -44,16 +54,16 @@ public class CharacterGenerator : MonoBehaviour {
     private void DisplayAttributes()
     {
         for (int cnt = 0; cnt < Enum.GetValues(typeof(AttributeName)).Length; cnt++) {
-            GUI.Label(new Rect(10, 40 + (cnt * 25), 100, 25), ((AttributeName)cnt).ToString());
-            GUI.Label(new Rect(115, 40 + (cnt * 25), 30, 25), _toon.GetPrimaryAttribute(cnt).AdjustedBaseValue().ToString());
-            if(GUI.Button(new Rect(150, 40 + (cnt * 25), 25, 25), "-")){
+            GUI.Label(new Rect(OFFSET, statStartingPos + (cnt * LINE_HEIGHT), STAT_LABEL_WIDTH, LINE_HEIGHT), ((AttributeName)cnt).ToString());
+            GUI.Label(new Rect(STAT_LABEL_WIDTH + OFFSET, statStartingPos + (cnt * LINE_HEIGHT), BASEVALUE_LABEL_WIDTH, LINE_HEIGHT), _toon.GetPrimaryAttribute(cnt).AdjustedBaseValue().ToString());
+            if(GUI.Button(new Rect(OFFSET + STAT_LABEL_WIDTH + BASEVALUE_LABEL_WIDTH, statStartingPos + (cnt * BUTTON_HEIGHT), BUTTON_WIDTH, BUTTON_HEIGHT), "-")){
                 if(_toon.GetPrimaryAttribute(cnt).BaseValue > MIN_STARTING_ATTRIBUTE_VALUE) {
                     _toon.GetPrimaryAttribute(cnt).BaseValue--;
                     pointsLeft++;
                     _toon.StatUpdate();
                 }
             }
-            if (GUI.Button(new Rect(180, 40 + (cnt * 25), 25, 25), "+")){
+            if (GUI.Button(new Rect(OFFSET + STAT_LABEL_WIDTH + BASEVALUE_LABEL_WIDTH + BUTTON_WIDTH, statStartingPos + (cnt * BUTTON_HEIGHT), BUTTON_WIDTH, BUTTON_HEIGHT), "+")){
                 if(pointsLeft > 0) {
                     _toon.GetPrimaryAttribute(cnt).BaseValue++;
                     pointsLeft--;
@@ -67,16 +77,16 @@ public class CharacterGenerator : MonoBehaviour {
     {
         for (int cnt = 0; cnt < Enum.GetValues(typeof(VitalName)).Length; cnt++)
         {
-            GUI.Label(new Rect(10, 40 + ((cnt + 9) * 25), 100, 25), ((VitalName)cnt).ToString());
-            GUI.Label(new Rect(115, 40 + ((cnt + 9) * 25), 30, 25), _toon.GetVital(cnt).AdjustedBaseValue.ToString());
+            GUI.Label(new Rect(OFFSET, statStartingPos + ((cnt + 9) * LINE_HEIGHT), STAT_LABEL_WIDTH, LINE_HEIGHT), ((VitalName)cnt).ToString());
+            GUI.Label(new Rect(OFFSET + STAT_LABEL_WIDTH, statStartingPos + ((cnt + 9) * LINE_HEIGHT), BASEVALUE_LABEL_WIDTH, LINE_HEIGHT), _toon.GetVital(cnt).AdjustedBaseValue.ToString());
         }
     }
     private void DisplaySkills()
     {
         for (int cnt = 0; cnt < Enum.GetValues(typeof(SkillName)).Length; cnt++)
         {
-            GUI.Label(new Rect(250, 40 + (cnt * 25), 30, 25), ((SkillName)cnt).ToString());
-            GUI.Label(new Rect(355, 40 + (cnt * 25), 30, 25), _toon.GetSkill(cnt).AdjustedBaseValue.ToString());
+            GUI.Label(new Rect(OFFSET + STAT_LABEL_WIDTH + BASEVALUE_LABEL_WIDTH + BUTTON_WIDTH * 2 + OFFSET * 2, statStartingPos + (cnt * LINE_HEIGHT), STAT_LABEL_WIDTH, LINE_HEIGHT), ((SkillName)cnt).ToString());
+            GUI.Label(new Rect(OFFSET + STAT_LABEL_WIDTH + BASEVALUE_LABEL_WIDTH + BUTTON_WIDTH * 2 + OFFSET * 2 + STAT_LABEL_WIDTH, statStartingPos + (cnt * LINE_HEIGHT), BASEVALUE_LABEL_WIDTH, LINE_HEIGHT), _toon.GetSkill(cnt).AdjustedBaseValue.ToString());
         }
     }
     private void DisplayPointsLeft() {

@@ -9,13 +9,9 @@
 
 public enum AttributeName
 {
-    Brawn,  //STR strength
-    Agility,    //DEX dexterity
-    Vitality,   //CON stamina
-    Intellect,  //INT intelligence
-    Wisdom, //WIS wits
-    Awareness,  //WIS perception
-    Charm,  //CHA charisma
-    Cunning,    //CHA manipulation
-    Looks   //CHA looks
+    Brawn,  //STR power brawn
+    Vitality,   //CON vitality stamina endurance toughness
+    Agility,    //DEX quickness
+    Intellect,  //INT intelligence intellect wits cunning
+    Wisdom //WIS wits awareness perception
 }
