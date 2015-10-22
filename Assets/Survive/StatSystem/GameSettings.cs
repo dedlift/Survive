@@ -23,7 +23,7 @@ public class GameSettings : MonoBehaviour
 
     void SaveCharacterData()
     {
-
+        //PlayerPrefs.SetString("Player Name", );
     }
 
     void LoadCharacterData()
